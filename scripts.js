@@ -23,20 +23,12 @@
 // Each Photo should store the photo's file name and the location the photo was taken in as strings.
 // Create instances of each object defined to prove that your object model works.
 
-// var myAlbums = {
-//   albumCovers: { title: "", location: "", url: "", timeStamp: "" },
-//   cocktails: { title: "", location: "", url: "", timeStamp: "" },
-//   trips: { title: "", location: "", url: "", timeStamp: "" },
-//   games: { title: "", location: "", url: "", timeStamp: "" },
-// }
-// console.dir(myAlbums);
-
 var photoApp = {
   myGallery: [
-    { title: , location: , url: , timeStamp: }
-    { title: , location: , url: , timeStamp: }
-    { title: , location: , url: , timeStamp: }
-    { title: , location: , url: , timeStamp: }
+    { title: "The Lookout" , location: "Island"  , url: "Gallery/lookout.jpg", timeStamp: "July 2009" },
+    { title: "White Houses", location: "Greece" , url: "Gallery/whiteHouses.jpg", timeStamp: "August 2009"},
+    { title: "Venetian Roads", location: "Venice", url: "Gallery/venetianRoads.jpg", timeStamp: "June 2010"},
+    { title: "Nojiri Village", location: "Asia" , url: "Gallery/nojiriVillage.jpg", timeStamp: "December 2015"}
   ],
   initialize: function() {
     console.log("== initialize ==");
@@ -53,6 +45,9 @@ var photoApp = {
     var location = document.getElementById("location").value;
     var url = document.getElementById("url").value;
     var timeStamp = document.getElementById("timeStamp").value
+    // ===== Make Instance ======
+    var nextPhoto = new photoApp.Photo(title, location, url, timeStamp);
+    console.dir(nextPhoto);
   },
   // ===== Photo Constructor ======
   Photo: function(title, location, url, timeStamp){
@@ -62,8 +57,11 @@ var photoApp = {
     this.url = url;
     this.timeStamp = timeStamp;
   }
-  // ===== Make Instance ======
-  var nextPhoto = newPhoto("","","")
 };
-
 photoApp.initialize();
+
+// Create a prototypical Person object.
+// From this object, extend a Teacher object and a Student object.
+// Each of these objects should have attributes and methods pertinent to what they describe.
+// Also create a School object that should be able to store instances of students and teachers.
+// Make sure to write code afterwards that creates instances of these objects to make sure that what you've written works well and you're able to store the necessary data in each object.
