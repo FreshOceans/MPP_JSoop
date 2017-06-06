@@ -2,7 +2,6 @@
 // multiply should initially return the number supplied * 1 and from then on whatever the current value is times the number supplied.
 // getCurrentValue should return the last answer returned from multiply.
 
-
 var multiplier = {
   currentValue: 1,
 
@@ -47,6 +46,8 @@ var photoApp = {
     var timeStamp = document.getElementById("timeStamp").value
     // ===== Make Instance ======
     var nextPhoto = new photoApp.Photo(title, location, url, timeStamp);
+    photoApp.myGallery.push(nextPhoto);
+    console.log(photoApp.myGallery);
     console.dir(nextPhoto);
   },
   // ===== Photo Constructor ======
@@ -66,6 +67,11 @@ photoApp.initialize();
 // Also create a School object that should be able to store instances of students and teachers.
 // Make sure to write code afterwards that creates instances of these objects to make sure that what you've written works well and you're able to store the necessary data in each object.
 
+var mySchool = {
+  myTeachers:[],
+  myStudents:[]
+};
+
 // ====== Person Constructor ======
 function Person(fName, lName, age, ethnicity){
   console.log("== Person == ");
@@ -78,6 +84,14 @@ function Person(fName, lName, age, ethnicity){
 console.log("== Instances for Person ==");
 var Monique = new Person("Monique", "Bolosan", "25", "Philipino");
 console.log("Monique:", Monique);
+// ===== Person Method =====
+Person.prototype.Hi = function(){
+  console.log("== Hi ==");
+  var Hi = this.fName + "Says: Hi!";
+  console.log(Hi);
+}
+Monique.Hi();
+
 
 // ===== Teacher Constructor =====
 function Teacher(fName, lName, age, ethnicity, discipline){
@@ -85,10 +99,28 @@ function Teacher(fName, lName, age, ethnicity, discipline){
   Person.call(this, fName, lName, age, ethnicity, discipline);
   this.discipline = discipline;
 }
+// ===== Inherited Teacher Method =====
+console.log("=== inherit Person Protoype for Teacher ===");
+Teacher.prototype = Object.create(Person.prototype);
+
 // ===== Teacher Instance =====
 console.log("== Instances for Teacher ==");
 var Anjali = new Teacher("Anjali", "Ram", "40", "Indian", "Communications");
 console.log("Anjali:", Anjali);
+mySchool.myTeachers.push(Anjali);
+console.log(mySchool.myTeachers);
+
+// ===== Calling Inherited Person Method =====
+Anjali.Hi();
+
+// ===== Teacher Method =====
+Teacher.prototype.Homework = function(){
+  console.log("== Homework ==");
+  var Homework = this.fName + "Says: Turn in your Homework!";
+  console.log(Homework);
+}
+Anjali.Homework();
+
 
 // ===== Student Constructor =====
 function Student(fName, lName, age, ethnicity, year){
@@ -96,7 +128,24 @@ function Student(fName, lName, age, ethnicity, year){
   Person.call(this, fName, lName, age, ethnicity, year);
   this.year = year;
 }
+// ===== Inherited Student Method =====
+console.log("=== inherit Person Protoype for Student ===");
+Student.prototype = Object.create(Person.prototype);
+
 // ===== Student Instance =====
 console.log("== Instance for Student ==");
 var Mike = new Student("Micahel", "Perez", "26", "Brazilian", "2013");
 console.log("Mike:", Mike);
+mySchool.myStudents.push(Mike);
+console.log(mySchool.myStudents);
+
+// ===== Calling Inherited Person Method =====
+Mike.Hi();
+
+// ===== Student Method =====
+Student.prototype.Excuse = function(){
+  console.log("== Excuse ==");
+  var Excuse = this.fName + "Says: My dog ate my Homework?";
+  console.log(Excuse);
+}
+Mike.Excuse();
