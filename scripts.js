@@ -3,19 +3,19 @@
 // getCurrentValue should return the last answer returned from multiply.
 
 
-// var multiplier = {
-//   currentValue: 1,
-//
-//   multiply: function(ourNumber) {
-//     console.log("== multiply ==");
-//     console.log("ourNumber:", ourNumber);
-//     var temporaryNumber = (ourNumber * multiplier.currentValue);
-//       console.log("temporaryNumber:", temporaryNumber);
-//       multiplier.currentValue = temporaryNumber;
-//   }
-//
-// };
-// multiplier.multiply(5);
+var multiplier = {
+  currentValue: 1,
+
+  multiply: function(ourNumber) {
+    console.log("== multiply ==");
+    console.log("ourNumber:", ourNumber);
+    var temporaryNumber = (ourNumber * multiplier.currentValue);
+      console.log("temporaryNumber:", temporaryNumber);
+      multiplier.currentValue = temporaryNumber;
+  }
+
+};
+multiplier.multiply(5);
 
 // Implement an object model that allows you to store strings that represent a Photo.
 // Your model should include an Album object that can contain many Photo objects in its photos attribute.
@@ -65,3 +65,38 @@ photoApp.initialize();
 // Each of these objects should have attributes and methods pertinent to what they describe.
 // Also create a School object that should be able to store instances of students and teachers.
 // Make sure to write code afterwards that creates instances of these objects to make sure that what you've written works well and you're able to store the necessary data in each object.
+
+// ====== Person Constructor ======
+function Person(fName, lName, age, ethnicity){
+  console.log("== Person == ");
+    this.fName = fName;
+    this.lName = lName;
+    this.age = age;
+    this.ethnicity = ethnicity;
+}
+// ===== Person Instance ====
+console.log("== Instances for Person ==");
+var Monique = new Person("Monique", "Bolosan", "25", "Philipino");
+console.log("Monique:", Monique);
+
+// ===== Teacher Constructor =====
+function Teacher(fName, lName, age, ethnicity, discipline){
+  console.log("== Teacher ==");
+  Person.call(this, fName, lName, age, ethnicity, discipline);
+  this.discipline = discipline;
+}
+// ===== Teacher Instance =====
+console.log("== Instances for Teacher ==");
+var Anjali = new Teacher("Anjali", "Ram", "40", "Indian", "Communications");
+console.log("Anjali:", Anjali);
+
+// ===== Student Constructor =====
+function Student(fName, lName, age, ethnicity, year){
+  console.log("== Student ==");
+  Person.call(this, fName, lName, age, ethnicity, year);
+  this.year = year;
+}
+// ===== Student Instance =====
+console.log("== Instance for Student ==");
+var Mike = new Student("Micahel", "Perez", "26", "Brazilian", "2013");
+console.log("Mike:", Mike);
