@@ -59,8 +59,6 @@ var photoApp = {
     this.url = url;
     this.timeStamp = timeStamp;
   },
-  // var galleryTitles = document.getElementById(galleryTitles);
-  // galleryTitles = innerhtml(" ");
   createPhotoList: function(){
     console.log("== createPhotoList ==");
     var nextListItem = "";
@@ -70,10 +68,8 @@ var photoApp = {
         nextListItem += "<li id='title_" + i + "'>" + nextTitle + "</li>";
       };
       console.log(nextListItem);
-    // document.getElementById(galleryTitles).appendChild(nextListItem);
+    document.getElementById("galleryTitles").innerHTML = nextListItem;
   }
-
-
 };
 photoApp.initialize();
 
