@@ -50,6 +50,7 @@ var photoApp = {
     console.log(photoApp.myGallery);
     console.dir(nextPhoto);
     photoApp.createPhotoList();
+    photoApp.activatePhotoList();
   },
   // ===== Photo Constructor ======
   Photo: function(title, location, url, timeStamp){
@@ -69,7 +70,46 @@ var photoApp = {
       };
       console.log(nextListItem);
     document.getElementById("galleryTitles").innerHTML = nextListItem;
+  },
+  activatePhotoList: function(){
+    console.log("== activatePhotoList ==");
+    var listArray = document.getElementById("galleryTitles").getElementsByTagName("li");
+    console.log(listArray);
+    for (var i = 0; i < listArray.length; i++) {
+      nextListItem = listArray[i];
+      console.log(nextListItem);
+      nextListItem.addEventListener("click", photoApp.displaySelectedPhoto);
+    };
+  },
+  displaySelectedPhoto: function(event){
+    console.log("== displaySelectedPhoto ==");
+    var titleId = event.currentTarget.id;
+    console.log(event.currentTarget.id);
+    var titleIndex = titleId.indexOf("_") + 1;
+    console.log(titleIndex);
+    var photoIndex = titleId.substring(titleIndex);
+    console.log(photoIndex);
+    var selectPhoto = photoApp.myGallery[photoIndex];
+    console.log(selectPhoto);
+    var photoTags = document.getElementById("selectedPhoto").getElementsByTagName("p");
+    console.log(photoTags);
+    photoTags[0].innerText = selectPhoto.title;
+    photoTags[1].innerText = selectPhoto.location;
+    photoTags[2].innerText = selectPhoto.url;
+    photoTags[3].innerText = selectPhoto.timeStamp;
+
+
+
+    // document.createElement("p").innerText = selectPhoto.title;
+    // document.createElement("p").innerText = selectPhoto.location;
+    // document.createElement("p").innerText = selectPhoto.url;
+    // document.createElement("p").innerText = selectPhoto.timeStamp;
+    // selectedPhoto.appendChild()
+
+
+    // document.getElementById("selectedPhoto").innerHTML = displayPhoto;
   }
+
 };
 photoApp.initialize();
 
