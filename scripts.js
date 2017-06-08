@@ -38,6 +38,7 @@ var photoApp = {
     var saveButton = document.getElementById("saveButton");
     saveButton.addEventListener("click", photoApp.saveNewPhoto);
   },
+  // ===== Adding new Photo to List ======
   saveNewPhoto: function(){
     console.log("== saveNewPhoto ==");
     var title = document.getElementById("title").value;
@@ -60,6 +61,7 @@ var photoApp = {
     this.url = url;
     this.timeStamp = timeStamp;
   },
+  // ====== Creating Photo List ======
   createPhotoList: function(){
     console.log("== createPhotoList ==");
     var nextListItem = "";
@@ -71,6 +73,7 @@ var photoApp = {
       console.log(nextListItem);
     document.getElementById("galleryTitles").innerHTML = nextListItem;
   },
+  // ====== Creating Clickable Item =====
   activatePhotoList: function(){
     console.log("== activatePhotoList ==");
     var listArray = document.getElementById("galleryTitles").getElementsByTagName("li");
@@ -81,6 +84,7 @@ var photoApp = {
       nextListItem.addEventListener("click", photoApp.displaySelectedPhoto);
     };
   },
+  // ===== Displaying Photo Contents ======
   displaySelectedPhoto: function(event){
     console.log("== displaySelectedPhoto ==");
     var titleId = event.currentTarget.id;
@@ -97,17 +101,6 @@ var photoApp = {
     photoTags[1].innerText = selectPhoto.location;
     photoTags[2].innerText = selectPhoto.url;
     photoTags[3].innerText = selectPhoto.timeStamp;
-
-
-
-    // document.createElement("p").innerText = selectPhoto.title;
-    // document.createElement("p").innerText = selectPhoto.location;
-    // document.createElement("p").innerText = selectPhoto.url;
-    // document.createElement("p").innerText = selectPhoto.timeStamp;
-    // selectedPhoto.appendChild()
-
-
-    // document.getElementById("selectedPhoto").innerHTML = displayPhoto;
   }
 
 };
@@ -151,7 +144,7 @@ function Teacher(fName, lName, age, ethnicity, discipline){
   Person.call(this, fName, lName, age, ethnicity, discipline);
   this.discipline = discipline;
 }
-// ===== Inherited Teacher Method =====
+// ===== Inherited Person Method for Teacher =====
 console.log("=== inherit Person Protoype for Teacher ===");
 Teacher.prototype = Object.create(Person.prototype);
 
@@ -180,7 +173,7 @@ function Student(fName, lName, age, ethnicity, year){
   Person.call(this, fName, lName, age, ethnicity, year);
   this.year = year;
 }
-// ===== Inherited Student Method =====
+// ===== Inherited Person Method to Student =====
 console.log("=== inherit Person Protoype for Student ===");
 Student.prototype = Object.create(Person.prototype);
 
