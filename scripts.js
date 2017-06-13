@@ -3,7 +3,7 @@
 // getCurrentValue should return the last answer returned from multiply.
 
 var multiplier = {
-  currentValue: 1,
+    currentValue: 1,
 
     multiply: function(ourNumber) {
         var self = this;
