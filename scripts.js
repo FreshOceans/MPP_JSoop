@@ -5,24 +5,25 @@
 var multiplier = {
   currentValue: 1,
 
-  multiply: function(ourNumber) {
-    var self = this;
-    console.log("== multiply ==");
-    console.log("ourNumber:", ourNumber);
-    var temporaryNumber = (ourNumber * multiplier.currentValue);
-      console.log("temporaryNumber:", temporaryNumber);
-      multiplier.currentValue = temporaryNumber;
-      self.getCurrentValue();
-
-  },
+    multiply: function(ourNumber) {
+        var self = this;
+        console.log("== multiply ==");
+        console.log("ourNumber", ourNumber);
+        var temporaryNumber = (ourNumber * multiplier.currentValue);
+        console.log("temporaryNumber", temporaryNumber);
+        multiplier.currentValue = temporaryNumber;
+        return temporaryNumber;
+    },
     getCurrentValue: function(){
-        return multiplier.currentValue;
-        console.log("getCurrentValue:", getCurrentValue);
+        var currentValue = multiplier.multiply;
+        return currentValue;
     }
 
 };
-multiplier.multiply(1);
-multiplier.getCurrentValue();
+var result = multiplier.multiply(2);
+console.log("result", result);
+var currentValueResult = multiplier.getCurrentValue();
+// console.log("currentValueResult", currentValueResult);
 
 // Implement an object model that allows you to store strings that represent a Photo.
 // Your model should include an Album object that can contain many Photo objects in its photos attribute.
